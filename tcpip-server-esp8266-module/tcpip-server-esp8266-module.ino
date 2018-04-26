@@ -439,6 +439,4 @@ void setGPIO(short pos, short val)
 			break;
 	}
 }
-
-
-
+//EOF
