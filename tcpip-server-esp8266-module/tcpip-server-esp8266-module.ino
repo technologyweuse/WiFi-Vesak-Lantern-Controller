@@ -404,34 +404,34 @@ void setGPIO(short pos, short val)
 {
 	switch(pos)
 	{
-		case 0:
+		case 0: // Relay 1
 			digitalWrite(GPIO_PIN_0, val);
 			break;
-		case 1:
+		case 1: // Relay 2
 			digitalWrite(GPIO_PIN_1, val);
 			break;
-		case 2:
+		case 2: // Relay 3
 			digitalWrite(GPIO_PIN_2, val);
 			break;
-		case 3:
+		case 3: // Relay 4
 			digitalWrite(GPIO_PIN_3, val);
 			break;
-		case 4:
+		case 4: // Relay 5
 			digitalWrite(GPIO_PIN_4, val);
 			break;
-		case 5:
+		case 5: // Relay 6
 			digitalWrite(GPIO_PIN_5, val);
 			break;
-		case 6:
+		case 6: // Relay 7
 			digitalWrite(GPIO_PIN_6, val);
 			break;
-		case 7:
+		case 7: // Relay 8
 			digitalWrite(GPIO_PIN_7, val);
 			break;
-		case 8:
+		case 8: // Relay L (Main Lantern)
 			digitalWrite(GPIO_PIN_8, val);
 			break;
-		case 9:
+		case 9: // Relay M (Motor)
 			digitalWrite(GPIO_PIN_9, val);
 			break;
 		default:
