@@ -17,7 +17,7 @@
  *   License along with Vesak Lantern Control System.                       *
  *   If not, see <http://www.gnu.org/licenses/>.                            *
  *                                                                          *
- *   For detail tutorial about this project, see                            *
+ *   For detail tutorial about linked list, see                             *
  *   <http://www.technologyweuse.com/>                                      *
  *                                                                          *
  ****************************************************************************/

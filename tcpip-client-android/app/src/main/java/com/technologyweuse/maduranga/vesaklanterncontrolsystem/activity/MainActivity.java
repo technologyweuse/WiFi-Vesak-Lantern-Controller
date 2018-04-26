@@ -17,7 +17,7 @@
  *   License along with Vesak Lantern Control System.                       *
  *   If not, see <http://www.gnu.org/licenses/>.                            *
  *                                                                          *
- *   For detail tutorial about this project, see                            *
+ *   For detail tutorial about linked list, see                             *
  *   <http://www.technologyweuse.com/>                                      *
  *                                                                          *
  ****************************************************************************/
@@ -245,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
                 mLanternController.motorRotationEnable(isChecked);
                 SharedPreferences sharedPref = getSharedPreferences(getApplicationContext().getPackageName(), Context.MODE_PRIVATE);
                 sharedPref.edit().putBoolean(Defines.ApplicationSetings.MOTOR_STATE.toString(), isChecked).apply();
-                sharedPref.edit().putBoolean(Defines.ApplicationSetings.MOTOR_STATE.toString(), isChecked).apply();
 
                 mActivityImgMotor.setImageResource(isChecked ? R.drawable.motor_on : R.drawable.motor_off);
             }
@@ -255,7 +254,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mLanternController.mainLanternAlwaysOn(isChecked);
                 SharedPreferences sharedPref = getSharedPreferences(getApplicationContext().getPackageName(), Context.MODE_PRIVATE);
-                sharedPref.edit().putBoolean(Defines.ApplicationSetings.MAIN_LANTERN_LIGHT.toString(), isChecked).apply();
                 sharedPref.edit().putBoolean(Defines.ApplicationSetings.MAIN_LANTERN_LIGHT.toString(), isChecked).apply();
             }
         });

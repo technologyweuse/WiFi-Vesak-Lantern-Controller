@@ -17,7 +17,7 @@
  *   License along with Vesak Lantern Control System.                       *
  *   If not, see <http://www.gnu.org/licenses/>.                            *
  *                                                                          *
- *   For detail tutorial about this project, see                            *
+ *   For detail tutorial about linked list, see                             *
  *   <http://www.technologyweuse.com/>                                      *
  *                                                                          *
  ****************************************************************************/
@@ -55,9 +55,7 @@ public class LanternDesignRunner extends LanternCommunicator {
 
     private CommStatus      mCommStatus;
     private JSONArray       mDesignDataJSONArray;
-    private boolean         mMotorRotate;
     private boolean         mDesignLogEnable;
-    private boolean         mMainLanternAlwaysOn;
     private int             mCurrentDesignNumber;
     private Design          mCurrentDesignData;
     private int             mCurrentDesignRunningIndex;
@@ -72,7 +70,6 @@ public class LanternDesignRunner extends LanternCommunicator {
 
         mCommStatus             = CommStatus.STOP;
         mCurrentDesignNumber    = 0;
-        mMainLanternAlwaysOn    = false;
     }
 
     /**
@@ -84,7 +81,7 @@ public class LanternDesignRunner extends LanternCommunicator {
 
     public boolean disConnect() { return super.disConnect(); }
 
-    public String sendDataPacket(String data1_str) { return super.sendDataPacket(data1_str, mMotorRotate, mMainLanternAlwaysOn); }
+    public String sendDataPacket(String data1_str) { return super.sendDataPacket(data1_str); }
 
     public void setIPAndPort(String ip, int port)
     {
@@ -194,11 +191,11 @@ public class LanternDesignRunner extends LanternCommunicator {
         return mCommStatus;
     }
 
-    public void motorRotationEnable(boolean state) { mMotorRotate = state; }
+    public void motorRotationEnable(boolean state) { super.motorRotationEnable(state); }
 
-    public void mainLanternAlwaysOn(boolean state) { mMainLanternAlwaysOn = state; }
+    public void mainLanternAlwaysOn(boolean state) { super.mainLanternAlwaysOn(state); }
 
-    public boolean getMotorRotationEnable() { return mMotorRotate; }
+    public boolean getMotorRotationEnable() { return super.getMotorRotationEnable(); }
 
     public void designLogEnable(boolean state) { mDesignLogEnable = state; }
 

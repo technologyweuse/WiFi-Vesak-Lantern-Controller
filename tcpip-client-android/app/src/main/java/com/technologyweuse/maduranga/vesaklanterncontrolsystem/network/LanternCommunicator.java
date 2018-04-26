@@ -17,7 +17,7 @@
  *   License along with Vesak Lantern Control System.                       *
  *   If not, see <http://www.gnu.org/licenses/>.                            *
  *                                                                          *
- *   For detail tutorial about this project, see                            *
+ *   For detail tutorial about linked list, see                             *
  *   <http://www.technologyweuse.com/>                                      *
  *                                                                          *
  ****************************************************************************/
@@ -51,6 +51,8 @@ public class LanternCommunicator extends Defines {
     public boolean      mIsConnected;
     public Context      mContext;
     private TCPIPClient mTcpClient;
+    private boolean     mMotorRotate;
+    private boolean     mMainLanternAlwaysOn;
 
     /**
      *  Constructor
@@ -60,6 +62,7 @@ public class LanternCommunicator extends Defines {
     {
         mIsConnected    = false;
         mContext        = context;
+        mMainLanternAlwaysOn    = false;
     }
 
     /**
@@ -132,7 +135,7 @@ public class LanternCommunicator extends Defines {
         callbackMsg(action, "Func\t: " + func + "\nErr\t\t\t: " + msg);
     }
 
-    public String sendDataPacket(String twoByteBitString, boolean motorRotate, boolean mainLanternLightOn) {
+    public String sendDataPacket(String twoByteBitString) {
         byte data[] = new byte[Defines.WIFI_DATA_PKT_BUFFER_SIZE];
         int intData1, intData2;
 
@@ -140,10 +143,10 @@ public class LanternCommunicator extends Defines {
         // --data2--|--data1--|
         // 0000 0000 0000 0000
 
-        if(mainLanternLightOn) {
+        if(mMainLanternAlwaysOn) {
             twoByteBitString = twoByteBitString.substring(0, BIN_STR_MAIN_LANTERN_LIGHT_POS) + '1' + twoByteBitString.substring(BIN_STR_MAIN_LANTERN_LIGHT_POS + 1);
         }
-        if(motorRotate) {
+        if(mMotorRotate) {
             twoByteBitString = twoByteBitString.substring(0, BIN_STR_MOTOR_ROTATE_BIT_POS) + '1' + twoByteBitString.substring(BIN_STR_MOTOR_ROTATE_BIT_POS + 1);
         }
 
@@ -161,6 +164,12 @@ public class LanternCommunicator extends Defines {
 
         return twoByteBitString;
     }
+
+    public void motorRotationEnable(boolean state) { mMotorRotate = state; }
+
+    public void mainLanternAlwaysOn(boolean state) { mMainLanternAlwaysOn = state; }
+
+    public boolean getMotorRotationEnable() { return mMotorRotate; }
 
     /**
      *  Methods (private)
