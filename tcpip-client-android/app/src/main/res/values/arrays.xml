@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources name="items">
+    <string-array name="file_list">
+        <item>default.json</item>
+    </string-array>
+</resources>
