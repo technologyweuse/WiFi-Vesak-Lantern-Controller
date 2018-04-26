@@ -1,7 +1,7 @@
 /****************************************************************************
  * Copyright (C) 2018 by Maduranga Jayasinghe                               *
  *                                                                          *
- *  Wireless Relay Control System                                           *
+ *  Wireless Relay Control System for Vesak Lantern                         *
  *                                                                          *
  *   This program is a free software : you can redistribute it and / or     *
  *   modify it under the terms of the GNU Lesser General Public  License    *
@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 /**
- * @file    VesalLanternController.ino
+ * @file    tcpip-server-esp8266-module.ino
  * @author  Maduranga Jayasinghe
  * @date    2018-04-26
  * @brief   This  program  is  work  as  TCP/IP  server  and  set GPIO pin
