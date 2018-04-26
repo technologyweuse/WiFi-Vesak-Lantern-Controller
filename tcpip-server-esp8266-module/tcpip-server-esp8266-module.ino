@@ -50,82 +50,82 @@
  * 
  * @internal
  *      History:
- *      2018.04.26      Initialise
+ *      2018.04.26	Initialise
  * @note
  *      Ref: http://www.electronicwings.com/nodemcu/nodemcu-gpio-with-arduino-ide
  */
  
-/*-------------------------------------------
-  |                DATA PACKET              |
-  ------------------------------------------- 
+/*-----------------------------------------------
+  |                DATA PACKET			|
+  -----------------------------------------------
   |   BYTE 1	|      |	PKT_ST (0x33)   |
-  -------------------------------------------
-  |   BYTE 2	| BIT7 |	RES				|
-  |         	| BIT6 |	RES				|
-  |         	| BIT5 |	RES				|
-  |         	| BIT4 |	RES				|
-  |         	| BIT3 |	RELAY 1			|
-  |         	| BIT2 |	RELAY 2			|
-  |         	| BIT1 |	RELAY 3			|
-  |         	| BIT0 |	RELAY 4			|
-  -------------------------------------------
-  |   BYTE 3	| BIT7 |	RES				|
-  |         	| BIT6 |	RES				|
-  |         	| BIT5 |	RES				|
-  |         	| BIT4 |	RES				|
-  |         	| BIT3 |	RELAY 5			|
-  |         	| BIT2 |	RELAY 6			|
-  |         	| BIT1 |	RELAY 7			|
-  |         	| BIT0 |	RELAY 8			|
-  -------------------------------------------
-  |   BYTE 4	| BIT7 |	RES				|
-  |         	| BIT6 |	RES				|
-  |         	| BIT5 |	RES				|
-  |         	| BIT4 |	RES				|
-  |         	| BIT3 |	RELAY L			|
-  |         	| BIT2 |	RELAY M			|
-  |         	| BIT1 |	RES				|
-  |         	| BIT0 |	RES				|
-  -------------------------------------------
-  |   BYTE 5	| BIT7 |	RES				|
-  |         	| BIT6 |	RES				|
-  |         	| BIT5 |	RES				|
-  |         	| BIT4 |	RES				|
-  |         	| BIT3 |	RES				|
-  |         	| BIT2 |	RES				|
-  |         	| BIT1 |	RES				|
-  |         	| BIT0 |	RES				|
-  -------------------------------------------
+  -----------------------------------------------
+  |   BYTE 2	| BIT7 |	RES		|
+  |         	| BIT6 |	RES		|
+  |         	| BIT5 |	RES		|
+  |         	| BIT4 |	RES		|
+  |         	| BIT3 |	RELAY 1		|
+  |         	| BIT2 |	RELAY 2		|
+  |         	| BIT1 |	RELAY 3		|
+  |         	| BIT0 |	RELAY 4		|
+  -----------------------------------------------
+  |   BYTE 3	| BIT7 |	RES		|
+  |         	| BIT6 |	RES		|
+  |         	| BIT5 |	RES		|
+  |         	| BIT4 |	RES		|
+  |         	| BIT3 |	RELAY 5		|
+  |         	| BIT2 |	RELAY 6		|
+  |         	| BIT1 |	RELAY 7		|
+  |         	| BIT0 |	RELAY 8		|
+  -----------------------------------------------
+  |   BYTE 4	| BIT7 |	RES		|
+  |         	| BIT6 |	RES		|
+  |         	| BIT5 |	RES		|
+  |         	| BIT4 |	RES		|
+  |         	| BIT3 |	RELAY L		|
+  |         	| BIT2 |	RELAY M		|
+  |         	| BIT1 |	RES		|
+  |         	| BIT0 |	RES		|
+  -----------------------------------------------
+  |   BYTE 5	| BIT7 |	RES		|
+  |         	| BIT6 |	RES		|
+  |         	| BIT5 |	RES		|
+  |         	| BIT4 |	RES		|
+  |         	| BIT3 |	RES		|
+  |         	| BIT2 |	RES		|
+  |         	| BIT1 |	RES		|
+  |         	| BIT0 |	RES		|
+  -----------------------------------------------
   |   BYTE 6	|      |	PKT_END (0x3C)	|
-  -------------------------------------------
+  -----------------------------------------------
   */
 
 #define WIFI_BUFFER_SIZE	6  
-#define PKT_ST				0x33
-#define PKT_END				0x3C
-#define PKT_ST_POS			0x00
+#define PKT_ST			0x33
+#define PKT_END			0x3C
+#define PKT_ST_POS		0x00
 #define PKT_DATA1_POS_H		0x01
 #define PKT_DATA1_POS_L		0x02
 #define PKT_DATA2_POS_H		0x03
 #define PKT_DATA2_POS_L		0x04
-#define PKT_END_POS			0x05
+#define PKT_END_POS		0x05
 
 /* GPIO PORTS */
-#define GPIO_PIN_0			D0		 /* Relay 1 */
-#define GPIO_PIN_1			D1		 /* Relay 2 */
-#define GPIO_PIN_2			D2		 /* Relay 3 */
-#define GPIO_PIN_3			D3		 /* Relay 4 */
-#define GPIO_PIN_4			D4		 /* Relay 5 */
-#define GPIO_PIN_5			D5		 /* Relay 6 */
-#define GPIO_PIN_6			D6		 /* Relay 7 */
-#define GPIO_PIN_7			D7		 /* Relay 8 */
-#define GPIO_PIN_8			D8		 /* Relay L */
-#define GPIO_PIN_9			D9		 /* Relay M */
+#define GPIO_PIN_0		D0	 /* Relay 1 */
+#define GPIO_PIN_1		D1	 /* Relay 2 */
+#define GPIO_PIN_2		D2	 /* Relay 3 */
+#define GPIO_PIN_3		D3	 /* Relay 4 */
+#define GPIO_PIN_4		D4	 /* Relay 5 */
+#define GPIO_PIN_5		D5	 /* Relay 6 */
+#define GPIO_PIN_6		D6	 /* Relay 7 */
+#define GPIO_PIN_7		D7	 /* Relay 8 */
+#define GPIO_PIN_8		D8	 /* Relay L */
+#define GPIO_PIN_9		D9	 /* Relay M */
 
-#define DEBUG_MODE_ENABLE			/* When this defined, Open serial port for debugging */
-//#define USE_WIFI_AP_MODE			/* When this defined, This module works as access point */
-#define USE_STATIC_IP				/* When this defined, This module use static ip address */
-#define PORT				4444
+#define DEBUG_MODE_ENABLE		/* When this defined, Open serial port for debugging */
+//#define USE_WIFI_AP_MODE		/* When this defined, This module works as access point */
+#define USE_STATIC_IP			/* When this defined, This module use static ip address */
+#define PORT			4444
 
 #ifdef DEBUG_MODE_ENABLE
   #define LOG(...) Serial.print(__VA_ARGS__)
@@ -152,9 +152,9 @@
  */
 WiFiServer 	server(PORT);
 WiFiClient 	client;
-int 		status 				= WL_IDLE_STATUS;
+int 		status 			= WL_IDLE_STATUS;
 boolean		ClientConnected 	= false;
-boolean		LastClientConnected = false;
+boolean		LastClientConnected	= false;
 uint8_t		wifiBuffer[WIFI_BUFFER_SIZE];
 
 /**
@@ -166,22 +166,21 @@ uint8_t		wifiBuffer[WIFI_BUFFER_SIZE];
  */
 void setup()
 {
-	
-	pinMode(GPIO_PIN_0, OUTPUT); // Connected to Relay 1
-	pinMode(GPIO_PIN_1, OUTPUT); // Connected to Relay 2
-	pinMode(GPIO_PIN_2, OUTPUT); // Connected to Relay 3
-	pinMode(GPIO_PIN_3, OUTPUT); // Connected to Relay 4
-	pinMode(GPIO_PIN_4, OUTPUT); // Connected to Relay 5
-	pinMode(GPIO_PIN_5, OUTPUT); // Connected to Relay 6
-	pinMode(GPIO_PIN_6, OUTPUT); // Connected to Relay 7
-	pinMode(GPIO_PIN_7, OUTPUT); // Connected to Relay 8
-	pinMode(GPIO_PIN_8, OUTPUT); // Connected to Relay L (Main Lantern)
-	pinMode(GPIO_PIN_9, OUTPUT); // Connected to Relay M (Motor)
+	pinMode(GPIO_PIN_0, OUTPUT); /* Connected to Relay 1 */
+	pinMode(GPIO_PIN_1, OUTPUT); /* Connected to Relay 2 */
+	pinMode(GPIO_PIN_2, OUTPUT); /* Connected to Relay 3 */
+	pinMode(GPIO_PIN_3, OUTPUT); /* Connected to Relay 4 */
+	pinMode(GPIO_PIN_4, OUTPUT); /* Connected to Relay 5 */
+	pinMode(GPIO_PIN_5, OUTPUT); /* Connected to Relay 6 */
+	pinMode(GPIO_PIN_6, OUTPUT); /* Connected to Relay 7 */
+	pinMode(GPIO_PIN_7, OUTPUT); /* Connected to Relay 8 */
+	pinMode(GPIO_PIN_8, OUTPUT); /* Connected to Relay L (Main Lantern) */
+	pinMode(GPIO_PIN_9, OUTPUT); /* Connected to Relay M (Motor) */
 	
 #ifdef DEBUG_MODE_ENABLE
-    /* Open serial port for debugging only. */
-    Serial.begin(115200);
-    delay(100);
+	/* Open serial port for debugging only. */
+	Serial.begin(115200);
+	delay(100);
 #endif
 	
 #ifdef USE_WIFI_AP_MODE	
@@ -197,9 +196,9 @@ void setup()
 #else
 	#ifdef USE_STATIC_IP
 		/* Set the static IP info here if you use static IP */
-    IPAddress ip(10, 0, 0, 150);
-    IPAddress gateway(10, 0, 0, 1);
-    IPAddress subnet(255, 255, 255, 0);
+		IPAddress ip(10, 0, 0, 150);
+		IPAddress gateway(10, 0, 0, 1);
+		IPAddress subnet(255, 255, 255, 0);
 		WiFi.config(ip, gateway, subnet);
 	#else
 		/*Use dynamic IP address assigned by WiFi Access Point
@@ -214,14 +213,14 @@ void setup()
 	}	
 #endif
     
-    LOG("WiFi Connected at ");
-    LOG_LN(WiFi.localIP());
+	LOG("WiFi Connected at ");
+	LOG_LN(WiFi.localIP());
 	
-    /* Start Server */
-    server.begin();
-    delay(1000);
+	/* Start Server */
+	server.begin();
+	delay(1000);
 	
-    LOG_LN("Server Ready");
+	LOG_LN("Server Ready");
 }
 
 /**
@@ -233,27 +232,27 @@ void setup()
  */
 void loop()
 {
-    /* 
+	/* 
 	 * Check whether or not a client is
 	 * connected once each loop
 	 */
-    SetClientConnected(CheckClientConnection());
+	SetClientConnected(CheckClientConnection());
 
-    if (ClientConnected && GetClientData())
-    {
-        ProcessClientData();
-    }
-    delay(10);
+	if (ClientConnected && GetClientData())
+	{
+		ProcessClientData();
+	}
+	delay(10);
 }
 
 /**
  * @brief Only process this routine when the ClientConnected
- *		  state has actually changed. Otherwise,
- *        return immediately. 
+ *	  state has actually changed. Otherwise,
+ *	  return immediately. 
  * 
  * @internal
- *      History:
- *      2018.04.26      Initialise
+ *	  History:
+ *        2018.04.26      Initialise
  */
 void SetClientConnected(boolean flag)
 {
@@ -281,38 +280,38 @@ void SetClientConnected(boolean flag)
  */
 boolean CheckClientConnection()
 {
-    /* 
-	 * If we have a running WiFiClient and there is a remote connection,
-  	 * just confirm the connection
-	 */
-    if (client && client.connected())
-    {
-        return true;
-    }
+	/* 
+	* If we have a running WiFiClient and there is a remote connection,
+  	* just confirm the connection
+	*/
+	if (client && client.connected())
+	{
+		return true;
+	}
 
-    /*
+	/*
 	 * If we have a running WiFiClient but the remote has disconnected,
 	 * disable WiFiClient and report no connection
 	 */
-    if (client && !client.connected())
-    {
-        client.stop();
-        return false;
-    }
+	if (client && !client.connected())
+	{
+		client.stop();
+		return false;
+	}
 
-    /*
+	/*
 	 * At this point we are ready for a new remote connection.
 	 * Create the WiFiClient and confirn the connection
 	 */
-    if (server.hasClient())
-    {
-        if ((!client) || (!client.connected()))
-        {
-            if (client) client.stop();
-            client = server.available();
-            return true;
-        }
-    }
+	if (server.hasClient())
+	{
+		if ((!client) || (!client.connected()))
+		{
+			if (client) client.stop();
+			client = server.available();
+			return true;
+		}
+	}
 }
 
 /**
@@ -329,16 +328,16 @@ boolean CheckClientConnection()
  */
 boolean GetClientData()
 {    
-    if (client.available())
-    {
-        client.read(wifiBuffer, WIFI_BUFFER_SIZE);
-        client.flush();
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+	if (client.available())
+	{
+		client.read(wifiBuffer, WIFI_BUFFER_SIZE);
+		client.flush();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /**
@@ -355,42 +354,42 @@ void ProcessClientData(void)
     if (client)
     {
         if(((byte)wifiBuffer[PKT_ST_POS] & 0xFF)== PKT_ST && 
-		   ((byte)wifiBuffer[PKT_END_POS] & 0xFF) == PKT_END)
+	   ((byte)wifiBuffer[PKT_END_POS] & 0xFF) == PKT_END)
         {
-			uint8_t design_data[2];
-			
-			design_data[0] = (wifiBuffer[PKT_DATA1_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA1_POS_H] & 0x0F) << 4);
-			design_data[1] = (wifiBuffer[PKT_DATA2_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA2_POS_H] & 0x0F) << 4);
+		uint8_t design_data[2];
 
-			LOG("Client Data Received: ");
-			LOG(wifiBuffer[PKT_ST_POS] & 0xFF, HEX);
-			LOG("-");
-			LOG(design_data[0], BIN);
-			LOG("-");
-			LOG(design_data[1] & 0xFF, BIN);
-			LOG("-");
-			LOG(wifiBuffer[PKT_END_POS] & 0xFF, HEX);
-			LOG_LN("");
+		design_data[0] = (wifiBuffer[PKT_DATA1_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA1_POS_H] & 0x0F) << 4);
+		design_data[1] = (wifiBuffer[PKT_DATA2_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA2_POS_H] & 0x0F) << 4);
+
+		LOG("Client Data Received: ");
+		LOG(wifiBuffer[PKT_ST_POS] & 0xFF, HEX);
+		LOG("-");
+		LOG(design_data[0], BIN);
+		LOG("-");
+		LOG(design_data[1] & 0xFF, BIN);
+		LOG("-");
+		LOG(wifiBuffer[PKT_END_POS] & 0xFF, HEX);
+		LOG_LN("");
     
         	byte first_byte  = (byte)design_data[0] & 0xFF;
         	byte second_byte = (byte)design_data[1] & 0xFF;
         
-			/* Set child lantern design */
+		/* Set child lantern design */
         	for(int i = 0; i < 8 ; i++ )
         	{
         		setGPIO( i, first_byte & ( 1 << i ));
         	}
         	
-			/* Set main lanten bulb On/Off */
-			setGPIO( 9, second_byte  & ( 1 << 7 ));
+		/* Set main lanten bulb On/Off */
+		setGPIO( 9, second_byte  & ( 1 << 7 ));
 			
-			/* Set motor rotation On/Off */
-			setGPIO( 10, second_byte  & ( 1 << 8 ));
+		/* Set motor rotation On/Off */
+		setGPIO( 10, second_byte  & ( 1 << 8 ));
         }
-		LOG_LN("ProcessClientData:OK");
+	LOG_LN("ProcessClientData:OK");
     }
     else{
-		LOG_LN("ProcessClientData:NG");
+	LOG_LN("ProcessClientData:NG");
     }
 }
 
@@ -439,6 +438,4 @@ void setGPIO(short pos, short val)
 			break;
 	}
 }
-
-
-
+//EOF
