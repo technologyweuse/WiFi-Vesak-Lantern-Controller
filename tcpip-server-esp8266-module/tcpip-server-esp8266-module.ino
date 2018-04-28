@@ -356,86 +356,43 @@ void ProcessClientData(void)
         if(((byte)wifiBuffer[PKT_ST_POS] & 0xFF)== PKT_ST && 
 	   ((byte)wifiBuffer[PKT_END_POS] & 0xFF) == PKT_END)
         {
-		uint8_t design_data[2];
+		uint8_t data1_h, data2_h;
+		uint8_t data1_l, data2_l;
 
-		design_data[0] = (wifiBuffer[PKT_DATA1_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA1_POS_H] & 0x0F) << 4);
-		design_data[1] = (wifiBuffer[PKT_DATA2_POS_L] & 0x0F) | ((wifiBuffer[PKT_DATA2_POS_H] & 0x0F) << 4);
+		data1_h = wifiBuffer[PKT_DATA1_POS_H] & 0x0F;
+		data1_l = wifiBuffer[PKT_DATA1_POS_L] & 0x0F;
+		data2_h = wifiBuffer[PKT_DATA2_POS_H] & 0x0F;
+		data2_l = wifiBuffer[PKT_DATA2_POS_L] & 0x0F;
 
 		LOG("Client Data Received: ");
 		LOG(wifiBuffer[PKT_ST_POS] & 0xFF, HEX);
 		LOG("-");
-		LOG(design_data[0], BIN);
+		LOG((data1_h << 4 & 0xF0 | data1_l), BIN);
 		LOG("-");
-		LOG(design_data[1] & 0xFF, BIN);
+		LOG((data2_h << 4 & 0xF0 | data2_l), BIN);
 		LOG("-");
 		LOG(wifiBuffer[PKT_END_POS] & 0xFF, HEX);
 		LOG_LN("");
-    
-        	byte first_byte  = (byte)design_data[0] & 0xFF;
-        	byte second_byte = (byte)design_data[1] & 0xFF;
-        
+
 		/* Set child lantern design */
-        	for(int i = 0; i < 8 ; i++ )
-        	{
-        		setGPIO( i, first_byte & ( 1 << i ));
-        	}
-        	
+		digitalWrite(GPIO_PIN_0, (data1_h & 8) == 8 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_1, (data1_h & 4) == 4 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_2, (data1_h & 2) == 2 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_3, (data1_h & 1) == 1 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_4, (data1_l & 8) == 8 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_5, (data1_l & 4) == 4 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_6, (data1_l & 2) == 2 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_7, (data1_l & 1) == 1 ? HIGH : LOW);
+
 		/* Set main lanten bulb On/Off */
-		setGPIO( 9, second_byte  & ( 1 << 7 ));
-			
+		digitalWrite(GPIO_PIN_8, (data2_h & 8) == 8 ? HIGH : LOW);
 		/* Set motor rotation On/Off */
-		setGPIO( 10, second_byte  & ( 1 << 8 ));
+		digitalWrite(GPIO_PIN_9, (data2_h & 4) == 4 ? HIGH : LOW);
+		digitalWrite(BUILTIN_LED, (data2_h & 4) == 4 ? LOW : HIGH);
         }
-	LOG_LN("ProcessClientData:OK");
     }
     else{
 	LOG_LN("ProcessClientData:NG");
     }
-}
-
-/**
- * @brief Read design data and set GPIO to HIGH or LOW
- *
- * @internal
- *      History:
- *      2018.04.26      Initialise
- */
-void setGPIO(short pos, short val)
-{
-	switch(pos)
-	{
-		case 0: // Relay 1
-			digitalWrite(GPIO_PIN_0, val);
-			break;
-		case 1: // Relay 2
-			digitalWrite(GPIO_PIN_1, val);
-			break;
-		case 2: // Relay 3
-			digitalWrite(GPIO_PIN_2, val);
-			break;
-		case 3: // Relay 4
-			digitalWrite(GPIO_PIN_3, val);
-			break;
-		case 4: // Relay 5
-			digitalWrite(GPIO_PIN_4, val);
-			break;
-		case 5: // Relay 6
-			digitalWrite(GPIO_PIN_5, val);
-			break;
-		case 6: // Relay 7
-			digitalWrite(GPIO_PIN_6, val);
-			break;
-		case 7: // Relay 8
-			digitalWrite(GPIO_PIN_7, val);
-			break;
-		case 8: // Relay L (Main Lantern)
-			digitalWrite(GPIO_PIN_8, val);
-			break;
-		case 9: // Relay M (Motor)
-			digitalWrite(GPIO_PIN_9, val);
-			break;
-		default:
-			break;
-	}
 }
 //EOF
