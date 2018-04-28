@@ -122,9 +122,9 @@
 #define GPIO_PIN_8		D8	 /* Relay L */
 #define GPIO_PIN_9		D9	 /* Relay M */
 
-#define DEBUG_MODE_ENABLE		/* When this defined, Open serial port for debugging */
-//#define USE_WIFI_AP_MODE		/* When this defined, This module works as access point */
-#define USE_STATIC_IP			/* When this defined, This module use static ip address */
+#define DEBUG_MODE_ENABLE		/* Open serial port for debugging */
+#define USE_WIFI_AP_MODE		/* This module works as access point */
+//#define USE_STATIC_IP			/* This module use static ip address */
 #define PORT			4444
 
 #ifdef DEBUG_MODE_ENABLE
