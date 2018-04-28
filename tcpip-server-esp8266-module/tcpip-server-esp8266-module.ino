@@ -136,7 +136,7 @@
 #endif
 
 #ifdef USE_WIFI_AP_MODE	
-	const char* ssid     = "NAME-FOR-ACCESS-POINT";
+	const char* ssid     = "VESAK-LANTERN";
 	const char* password = "yourpassword";
 #else
 	const char* ssid     = "YOUR-ACCESS-POINT-NAME";
