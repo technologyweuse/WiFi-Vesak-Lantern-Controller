@@ -120,7 +120,7 @@
 #define GPIO_PIN_6		D6	 /* Relay 7 */
 #define GPIO_PIN_7		D7	 /* Relay 8 */
 #define GPIO_PIN_8		D8	 /* Relay L */
-#define GPIO_PIN_9		D9	 /* Relay M */
+#define GPIO_PIN_9		D10	 /* Relay M */
 
 #define DEBUG_MODE_ENABLE		/* Open serial port for debugging */
 #define USE_WIFI_AP_MODE		/* This module works as access point */
