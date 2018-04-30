@@ -119,10 +119,10 @@
 #define GPIO_PIN_5		D5	 /* Relay 6 */
 #define GPIO_PIN_6		D6	 /* Relay 7 */
 #define GPIO_PIN_7		D7	 /* Relay 8 */
-#define GPIO_PIN_8		D8	 /* Relay L */
+#define GPIO_PIN_8		D9	 /* Relay L */
 #define GPIO_PIN_9		D10	 /* Relay M */
 
-#define DEBUG_MODE_ENABLE		/* Open serial port for debugging */
+//#define DEBUG_MODE_ENABLE		/* Open serial port for debugging */
 #define USE_WIFI_AP_MODE		/* This module works as access point */
 //#define USE_STATIC_IP			/* This module use static ip address */
 #define PORT			4444
@@ -176,6 +176,20 @@ void setup()
 	pinMode(GPIO_PIN_7, OUTPUT); /* Connected to Relay 8 */
 	pinMode(GPIO_PIN_8, OUTPUT); /* Connected to Relay L (Main Lantern) */
 	pinMode(GPIO_PIN_9, OUTPUT); /* Connected to Relay M (Motor) */
+
+  /* Set child lantern design */
+  digitalWrite(GPIO_PIN_0, HIGH);
+  digitalWrite(GPIO_PIN_1, HIGH);
+  digitalWrite(GPIO_PIN_2, HIGH);
+  digitalWrite(GPIO_PIN_3, HIGH);
+  digitalWrite(GPIO_PIN_4, HIGH);
+  digitalWrite(GPIO_PIN_5, HIGH);
+  digitalWrite(GPIO_PIN_6, HIGH);
+  digitalWrite(GPIO_PIN_7, HIGH);
+  /* Set main lanten bulb On/Off */
+  digitalWrite(GPIO_PIN_8, HIGH);
+  /* Set motor rotation On/Off */
+  digitalWrite(GPIO_PIN_9, HIGH);
 	
 #ifdef DEBUG_MODE_ENABLE
 	/* Open serial port for debugging only. */
@@ -242,7 +256,7 @@ void loop()
 	{
 		ProcessClientData();
 	}
-	delay(10);
+	//delay(10);
 }
 
 /**
@@ -309,6 +323,7 @@ boolean CheckClientConnection()
 		{
 			if (client) client.stop();
 			client = server.available();
+      client.setNoDelay(1);
 			return true;
 		}
 	}
@@ -331,7 +346,7 @@ boolean GetClientData()
 	if (client.available())
 	{
 		client.read(wifiBuffer, WIFI_BUFFER_SIZE);
-		client.flush();
+		//client.flush();
 		return true;
 	}
 	else
@@ -364,31 +379,30 @@ void ProcessClientData(void)
 		data2_h = wifiBuffer[PKT_DATA2_POS_H] & 0x0F;
 		data2_l = wifiBuffer[PKT_DATA2_POS_L] & 0x0F;
 
-		LOG("Client Data Received: ");
-		LOG(wifiBuffer[PKT_ST_POS] & 0xFF, HEX);
-		LOG("-");
-		LOG((data1_h << 4 & 0xF0 | data1_l), BIN);
-		LOG("-");
-		LOG((data2_h << 4 & 0xF0 | data2_l), BIN);
-		LOG("-");
-		LOG(wifiBuffer[PKT_END_POS] & 0xFF, HEX);
-		LOG_LN("");
+		//LOG("Client Data Received: ");
+		//LOG(wifiBuffer[PKT_ST_POS] & 0xFF, HEX);
+		//LOG("-");
+		//LOG((data1_h << 4 & 0xF0 | data1_l), BIN);
+		//LOG("-");
+		//LOG((data2_h << 4 & 0xF0 | data2_l), BIN);
+		//LOG("-");
+		//LOG(wifiBuffer[PKT_END_POS] & 0xFF, HEX);
+		//LOG_LN("");
 
 		/* Set child lantern design */
-		digitalWrite(GPIO_PIN_0, (data1_h & 8) == 8 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_1, (data1_h & 4) == 4 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_2, (data1_h & 2) == 2 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_3, (data1_h & 1) == 1 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_4, (data1_l & 8) == 8 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_5, (data1_l & 4) == 4 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_6, (data1_l & 2) == 2 ? HIGH : LOW);
-		digitalWrite(GPIO_PIN_7, (data1_l & 1) == 1 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_0, bitRead(data1_h, 3) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_1, bitRead(data1_h, 2) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_2, bitRead(data1_h, 1) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_3, bitRead(data1_h, 0) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_4, bitRead(data1_l, 3) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_5, bitRead(data1_l, 2) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_6, bitRead(data1_l, 1) == 1 ? LOW : HIGH );
+		digitalWrite(GPIO_PIN_7, bitRead(data1_l, 0) == 1 ? LOW : HIGH );
 
 		/* Set main lanten bulb On/Off */
-		digitalWrite(GPIO_PIN_8, (data2_h & 8) == 8 ? HIGH : LOW);
+		digitalWrite(GPIO_PIN_8, bitRead(data2_h, 3) == 1 ? LOW : HIGH );
 		/* Set motor rotation On/Off */
-		digitalWrite(GPIO_PIN_9, (data2_h & 4) == 4 ? HIGH : LOW);
-		digitalWrite(BUILTIN_LED, (data2_h & 4) == 4 ? LOW : HIGH);
+		digitalWrite(GPIO_PIN_9, bitRead(data2_h, 2) == 1 ? LOW : HIGH );
         }
     }
     else{
