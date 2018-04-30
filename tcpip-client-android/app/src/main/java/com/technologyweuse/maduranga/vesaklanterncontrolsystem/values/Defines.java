@@ -56,7 +56,7 @@ public class Defines {
     }
 
     public static final String  DB_DATA_FOLDER                  = "/FLASHER_DATA/";
-    public static final int     MAX_LINE                        = 10;
+    public static final int     MAX_LINE                        = 8;
     public static final int     MAX_BITS                        = 10;
     public static final boolean ON                              = true;
     public static final boolean OFF                             = false;

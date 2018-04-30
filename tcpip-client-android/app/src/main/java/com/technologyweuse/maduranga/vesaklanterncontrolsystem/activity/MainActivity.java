@@ -289,7 +289,6 @@ public class MainActivity extends AppCompatActivity {
                     String twoByteBitString;
                     twoByteBitString = mLanternController.sendDataPacket(data1_str);
 
-
                     if(mLanternController.getDesignLogEnable()) {
                         writeUIDesignDataTerminal(data1_str);
                     }
@@ -457,14 +456,14 @@ public class MainActivity extends AppCompatActivity {
     private void setUIImgData(int bit, boolean value)
     {
         if(bit == 8){
-            mImgData[bit].setImageResource(value == true ? R.drawable.btn_on_orange : R.drawable.btn_off_orange);
+            mImgData[bit].setImageResource(value == true ? R.drawable.green_on : R.drawable.green_off);
         }
         else if(bit == 9){
-            mImgData[bit].setImageResource(value == true ? R.drawable.btn_on_blue : R.drawable.btn_off_blue);
+            mImgData[bit].setImageResource(value == true ? R.drawable.indigo_on : R.drawable.indigo_off);
             mActivityImgMotor.setImageResource(value == true ? R.drawable.motor_on : R.drawable.motor_off);
         }
         else {
-            mImgData[bit].setImageResource(value == true ? R.drawable.btn_on : R.drawable.btn_off);
+            mImgData[bit].setImageResource(value == true ? R.drawable.yellow_on : R.drawable.yellow_off);
         }
     }
 
@@ -472,10 +471,10 @@ public class MainActivity extends AppCompatActivity {
     {
         for(int i = 0; i < 8; i++)
         {
-            mImgData[i].setImageResource(value == true ? R.drawable.btn_on : R.drawable.btn_off);
+            mImgData[i].setImageResource(value == true ? R.drawable.yellow_on : R.drawable.yellow_off);
         }
-        mImgData[8].setImageResource(value == true ? R.drawable.btn_on_orange : R.drawable.btn_off_orange);
-        mImgData[9].setImageResource(value == true ? R.drawable.btn_on_blue : R.drawable.btn_off_blue);
+        mImgData[8].setImageResource(value == true ? R.drawable.green_on : R.drawable.green_off);
+        mImgData[9].setImageResource(value == true ? R.drawable.indigo_on : R.drawable.indigo_off);
         mActivityImgMotor.setImageResource(value == true ? R.drawable.motor_on : R.drawable.motor_off);
     }
 

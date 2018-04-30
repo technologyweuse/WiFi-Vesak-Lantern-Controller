@@ -241,7 +241,7 @@
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
 
                         <ImageView
@@ -250,7 +250,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit2"
@@ -258,7 +258,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit3"
@@ -266,7 +266,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit4"
@@ -274,7 +274,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit5"
@@ -282,14 +282,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit7"
@@ -297,21 +297,21 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="2dp"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/yellow_off" />
 
                         <ImageView
                             android:id="@+id/imgBit8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/green_off" />
 
                         <ImageView
                             android:id="@+id/imgBit9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/btn_off" />
+                            android:src="@drawable/indigo_off" />
 
                     </LinearLayout>
 

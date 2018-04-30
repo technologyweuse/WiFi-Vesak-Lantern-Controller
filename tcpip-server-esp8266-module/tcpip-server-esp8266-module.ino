@@ -346,7 +346,7 @@ boolean GetClientData()
 	if (client.available())
 	{
 		client.read(wifiBuffer, WIFI_BUFFER_SIZE);
-		//client.flush();
+		client.flush();
 		return true;
 	}
 	else
