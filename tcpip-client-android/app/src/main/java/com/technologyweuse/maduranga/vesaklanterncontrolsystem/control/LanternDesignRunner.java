@@ -247,6 +247,7 @@ public class LanternDesignRunner extends LanternCommunicator {
                 String data = mCurrentDesignData.data[mCurrentDesignRunningIndex++];
 
                 callbackMsg(MainActivity.CallbackReceiver.ACTION_UPDATE_BITS, data);
+                sendDataPacket(data);
 
                 if (mCurrentDesignRunningIndex == mCurrentDesignData.dataLength) {
                     mCurrentDesignRunningIndex = 0;

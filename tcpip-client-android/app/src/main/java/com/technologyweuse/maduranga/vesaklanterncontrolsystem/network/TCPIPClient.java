@@ -69,7 +69,7 @@ public class TCPIPClient {
     public void sendMessage(byte[] data) {
         if (mBufferOut != null && !mBufferOut.checkError()) {
             mBufferOut.print(new String(data));
-            mBufferOut.flush();
+            //mBufferOut.flush();
         }
     }
 
