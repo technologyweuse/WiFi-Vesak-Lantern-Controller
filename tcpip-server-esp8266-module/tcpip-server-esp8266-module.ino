@@ -177,19 +177,19 @@ void setup()
 	pinMode(GPIO_PIN_8, OUTPUT); /* Connected to Relay L (Main Lantern) */
 	pinMode(GPIO_PIN_9, OUTPUT); /* Connected to Relay M (Motor) */
 
-  /* Set child lantern design */
-  digitalWrite(GPIO_PIN_0, HIGH);
-  digitalWrite(GPIO_PIN_1, HIGH);
-  digitalWrite(GPIO_PIN_2, HIGH);
-  digitalWrite(GPIO_PIN_3, HIGH);
-  digitalWrite(GPIO_PIN_4, HIGH);
-  digitalWrite(GPIO_PIN_5, HIGH);
-  digitalWrite(GPIO_PIN_6, HIGH);
-  digitalWrite(GPIO_PIN_7, HIGH);
-  /* Set main lanten bulb On/Off */
-  digitalWrite(GPIO_PIN_8, HIGH);
-  /* Set motor rotation On/Off */
-  digitalWrite(GPIO_PIN_9, HIGH);
+	/* Set child lantern design */
+	digitalWrite(GPIO_PIN_0, HIGH);
+	digitalWrite(GPIO_PIN_1, HIGH);
+	digitalWrite(GPIO_PIN_2, HIGH);
+	digitalWrite(GPIO_PIN_3, HIGH);
+	digitalWrite(GPIO_PIN_4, HIGH);
+	digitalWrite(GPIO_PIN_5, HIGH);
+	digitalWrite(GPIO_PIN_6, HIGH);
+	digitalWrite(GPIO_PIN_7, HIGH);
+	/* Set main lanten bulb On/Off */
+	digitalWrite(GPIO_PIN_8, HIGH);
+	/* Set motor rotation On/Off */
+	digitalWrite(GPIO_PIN_9, HIGH);
 	
 #ifdef DEBUG_MODE_ENABLE
 	/* Open serial port for debugging only. */
