@@ -1,2 +1,3 @@
-# tcpip-client-android
-This is an hobby project to control the design of Vesak lantern by using Android Tablet PC wirelessly
+# Android TCP/IP Client
+
+This is Android TCP/IP Clent application. Clone it and open with your latest Android IDE
