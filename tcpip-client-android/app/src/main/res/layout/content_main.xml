@@ -9,47 +9,51 @@
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/colorBG"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="25dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:gravity="right"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgMotor"
-                        android:layout_width="35dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="right"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:padding="0dp"
                         app:srcCompat="@drawable/motor_off" />
 
                     <ImageView
                         android:id="@+id/imgWiFi"
-                        android:layout_width="35dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="right"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
-                        android:padding="0dp"
                         app:srcCompat="@drawable/disconnected" />
                 </LinearLayout>
 
@@ -57,7 +61,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="231dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingLeft="25dp"
@@ -204,10 +208,8 @@
                 <TextView
                     android:id="@+id/txtErr"
                     android:layout_width="match_parent"
-                    android:layout_height="104dp"
-                    android:fontFamily="sans-serif"
-                    android:paddingBottom="25dp"
-                    android:paddingTop="25dp"
+                    android:layout_height="wrap_content"
+                    android:lines="3"
                     android:scrollbars="vertical"
                     android:text="TextView"
                     android:textAlignment="textStart"
@@ -224,7 +226,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
 
@@ -317,33 +319,38 @@
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="157dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="fill_horizontal"
                             android:orientation="vertical">
 
                             <Switch
                                 android:id="@+id/swMotor"
-                                android:layout_width="250dp"
-                                android:layout_height="48dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
                                 android:text="Motor"
                                 android:theme="@style/BtnSwitch" />
 
                             <Switch
                                 android:id="@+id/swDesignLog"
-                                android:layout_width="250dp"
-                                android:layout_height="48dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
                                 android:text="Design Log"
                                 android:theme="@style/BtnSwitch" />
 
                             <Switch
                                 android:id="@+id/swMainLanternAlwaysOn"
-                                android:layout_width="250dp"
-                                android:layout_height="48dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
                                 android:text="Main Lantern Light Always On"
                                 android:theme="@style/BtnSwitch" />
                         </LinearLayout>
@@ -352,17 +359,17 @@
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:visibility="visible">
 
                         <TextView
                             android:id="@+id/txtViewerDesignLog"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:background="@color/colorPrimaryDark"
                             android:fontFamily="monospace"
                             android:letterSpacing="0.5"
+                            android:lines="3"
                             android:text="0000000000"
                             android:textAlignment="center"
                             android:textColor="@android:color/white"
@@ -373,21 +380,20 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="76dp"
-                        android:layout_marginBottom="100dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/btnConnect"
-                            android:layout_width="190dp"
-                            android:layout_height="75dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Connect" />
 
                         <Button
                             android:id="@+id/btnRun"
-                            android:layout_width="190dp"
-                            android:layout_height="75dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Run" />
 
