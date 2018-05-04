@@ -429,19 +429,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadDbFileList()
     {
+        mDbFileList = null;
+
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + Defines.DB_DATA_FOLDER;
         File directory = new File(path);
-        File[] files = directory.listFiles();
-
-        if(files.length > 0) {
-            mDbFileList = new String[files.length];
-            for (int i = 0; i < files.length; i++) {
-                mDbFileList[i] = files[i].getName();
+        if (directory.exists()) {
+            File[] files = directory.listFiles();
+            if (files.length > 0) {
+                mDbFileList = new String[files.length];
+                for (int i = 0; i < files.length; i++) {
+                    mDbFileList[i] = files[i].getName();
+                }
             }
-        }
-        else
-        {
-            mDbFileList = null;
         }
     }
 
