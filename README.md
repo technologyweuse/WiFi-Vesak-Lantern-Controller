@@ -1,6 +1,6 @@
 # WiFi Vesak Lantern Controller
 
-![alt text](http://static.jp.technologyweuse.com/i/22/0.jpg)
+![alt text](http://static.jp.technologyweuse.com/i/22/post.jpg)
 
 ## What is rotating Vesak lantern?
 If you are not a Sri Lankan and don't have any idea about rotating Vesak Lantern, ask you to watch the video below. Then you can get the real idea about it and it's easy to understand than explain in words. This is the final lantern what I'm going to explain. Here, I've made a traditional lantern which familiar with Sri Lankan culture.
