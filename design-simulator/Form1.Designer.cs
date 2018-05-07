@@ -241,7 +241,7 @@
             this.btnServerStop.Name = "btnServerStop";
             this.btnServerStop.Size = new System.Drawing.Size(98, 42);
             this.btnServerStop.TabIndex = 0;
-            this.btnServerStop.Text = "Server Start";
+            this.btnServerStop.Text = "Server Stop";
             this.btnServerStop.UseVisualStyleBackColor = true;
             this.btnServerStop.Click += new System.EventHandler(this.btnServerStop_Click);
             // 
