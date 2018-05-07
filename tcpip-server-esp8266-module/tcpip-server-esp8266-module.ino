@@ -119,8 +119,8 @@
 #define GPIO_PIN_5		D5	 /* Relay 6 */
 #define GPIO_PIN_6		D6	 /* Relay 7 */
 #define GPIO_PIN_7		D7	 /* Relay 8 */
-#define GPIO_PIN_8		D9	 /* Relay L */
-#define GPIO_PIN_9		D10	 /* Relay M */
+#define GPIO_PIN_8		D9	 /* Relay L (Main Lantern) */
+#define GPIO_PIN_9		D10	 /* Relay M (Motor) */
 
 //#define DEBUG_MODE_ENABLE		/* Open serial port for debugging */
 #define USE_WIFI_AP_MODE		/* This module works as access point */
@@ -177,7 +177,7 @@ void setup()
 	pinMode(GPIO_PIN_8, OUTPUT); /* Connected to Relay L (Main Lantern) */
 	pinMode(GPIO_PIN_9, OUTPUT); /* Connected to Relay M (Motor) */
 
-	/* Set child lantern design */
+	/* Set child lantern bulb off */
 	digitalWrite(GPIO_PIN_0, HIGH);
 	digitalWrite(GPIO_PIN_1, HIGH);
 	digitalWrite(GPIO_PIN_2, HIGH);
@@ -186,9 +186,9 @@ void setup()
 	digitalWrite(GPIO_PIN_5, HIGH);
 	digitalWrite(GPIO_PIN_6, HIGH);
 	digitalWrite(GPIO_PIN_7, HIGH);
-	/* Set main lanten bulb On/Off */
+	/* Set main lanten bulb off */
 	digitalWrite(GPIO_PIN_8, HIGH);
-	/* Set motor rotation On/Off */
+	/* Set motor rotation off */
 	digitalWrite(GPIO_PIN_9, HIGH);
 	
 #ifdef DEBUG_MODE_ENABLE
