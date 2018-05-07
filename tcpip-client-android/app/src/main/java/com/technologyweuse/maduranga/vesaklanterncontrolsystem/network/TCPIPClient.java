@@ -99,7 +99,7 @@ public class TCPIPClient {
             mSocket = new Socket(serverAddr, mPort);
 
             try {
-                //sends the message to the server
+                //establish a connection with the server server
                 mBufferOut = new PrintWriter(new BufferedWriter(new OutputStreamWriter(mSocket.getOutputStream())), true);
             } catch (Exception e) {
                 return -1;
