@@ -93,7 +93,7 @@ public class TCPIPClient {
 
     public int run() {
         try {
-            //here you must put your computer's IP address.
+            //here you must put your server's IP address.
             InetAddress serverAddr = InetAddress.getByName(mIP);
             //create a socket to make the connection with the server
             mSocket = new Socket(serverAddr, mPort);
